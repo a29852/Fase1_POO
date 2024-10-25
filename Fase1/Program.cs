@@ -32,6 +32,7 @@ namespace Fase1
             }
 
 
+
             //ALOJAMENTO
             Alojamento a1 = new Alojamento(1, "casa", "braga", 12, true);
             Alojamento a2 = new Alojamento(2, "apartamento", "barcelos", 10, true);
@@ -43,6 +44,14 @@ namespace Fase1
             Alojamento aux2 = alojamentos1.PequisarAlojamento(2);
             Console.WriteLine("localidade: " + aux2.Localizacao.ToString());
             Console.WriteLine("disponibilidade: " + aux2.Disponivel.ToString());
+
+
+            Alojamento[] listaAlojamentos = alojamentos1.AmostrarAlojamentos();
+
+            foreach (Alojamento alojamento in listaAlojamentos)
+            {
+                Console.WriteLine(alojamento.Localizacao);
+            }
 
             //RESERVA
             var date = new DateTime(2024, 11, 12, 00, 00, 00);

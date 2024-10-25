@@ -52,13 +52,16 @@ namespace Fase1
             return null;
         }
 
-        public Alojamento AmostrarClientes()
+        public Alojamento[] AmostrarAlojamentos()
         {
-            for (int i = 0; i < alojamentos.Length; i++)
+            Alojamento[] totalAlojamentos = new Alojamento[tot];
+
+            for (int i = 0; i < tot; i++)
             {
-                return alojamentos[i];
+                totalAlojamentos[i] = alojamentos[i];
             }
-            return null;
+
+            return totalAlojamentos;
         }
 
         #endregion

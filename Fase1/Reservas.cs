@@ -51,13 +51,16 @@ namespace Fase1
             return null;
         }
 
-        public Reserva AmostrarReservas()
+        public Reserva[] AmostrarReservas()
         {
-            for (int i = 0; i < reservas.Length; i++)
+            Reserva[] totalReservas = new Reserva[tot];
+
+            for (int i = 0; i < tot; i++)
             {
-                return reservas[i];
+                totalReservas[i] = reservas[i];
             }
-            return null;
+
+            return totalReservas;
         }
 
         #endregion
