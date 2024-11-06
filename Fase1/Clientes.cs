@@ -10,38 +10,40 @@ namespace Fase1
     {
         #region ATRIBUTOS
 
-        Cliente[] clientes;
-        int tot = 0;
+        const int MAXCLIENTES = 20;
+        static Cliente[] clientes;
+        static int totClientes = 0;
 
         #endregion
 
         #region CONSTRUTORES
 
-        public Clientes(int n)
+        static Clientes()
         {
-            clientes = new Cliente[n];
+            clientes = new Cliente[MAXCLIENTES];
+            totClientes = 0;
         }
 
         #endregion
 
         #region METODOS
 
-        public bool RegistarCliente(Cliente c)
+        public static bool RegistarCliente(Cliente c)
         {
-            if (tot < clientes.Length)
+            if (totClientes < MAXCLIENTES)
             {
-                clientes[tot++] = c;
+                clientes[totClientes++] = c;
                 return true;
             }
 
             return false;
         }
 
-        public Cliente PequisarCliente(int nif)
+        public static Cliente PequisarCliente(int id)
         {
             foreach (Cliente cliente in clientes)
             {
-                if (cliente.Nif == nif)
+                if (cliente.Id == id)
                 {
                     return cliente;
                 }
@@ -50,11 +52,11 @@ namespace Fase1
         }
 
 
-        public Cliente[] AmostrarClientes()
+        public static Cliente[] AmostrarClientes()
         {
-            Cliente[] totalClientes = new Cliente[tot];
+            Cliente[] totalClientes = new Cliente[totClientes];
 
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < totClientes; i++)
             {
                 totalClientes[i] = clientes[i];
             }

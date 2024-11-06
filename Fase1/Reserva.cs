@@ -26,6 +26,7 @@ namespace Fase1
             this.id = id;
             this.cliente = c;
             this.alojamento = a;
+            this.alojamento.Disponivel = false;
             dataInicio = DateTime.Now;
             this.dataFim = dataFim;
         }

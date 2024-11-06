@@ -11,16 +11,18 @@ namespace Fase1
     {
         #region ATRIBUTOS
 
-        Reserva[] reservas;
-        int tot = 0;
+        const int MAXRES = 20;
+        static Reserva[] reservas;
+        static int totRes = 0;
 
         #endregion
 
         #region CONSTRURORES
 
-        public Reservas(int n)
+        static Reservas()
         {
-            reservas = new Reserva[n];
+            reservas = new Reserva[MAXRES];
+            totRes = 0;
         }
 
         #endregion
@@ -28,18 +30,45 @@ namespace Fase1
 
         #region METODOS
 
-        public bool RegistarReservas(Reserva r)
+        public static bool CancelarReserva(Reserva r)
         {
-            if (tot < reservas.Length)
+            foreach (Reserva reserva in reservas)
             {
-                reservas[tot++] = r;
+                if (reserva.Id == r.Id)   //verifica se a reserva a cancelar existe
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool ModificarReserva(Reserva r, Alojamento a)
+        {
+            foreach (Reserva reserva in reservas)
+            {
+                if (reserva.Id == r.Id)   //verifica se a reserva existe
+                {
+                    reserva.Alojamento.Disponivel = true;
+                    reserva.Alojamento = a;
+                    a.Disponivel = false;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool RegistarReservas(Reserva r)
+        {
+            if (totRes < reservas.Length)
+            {
+                reservas[totRes++] = r;
                 return true;
             }
 
             return false;
         }
 
-        public Reserva PequisarReserva(int id)
+        public static Reserva PequisarReserva(int id)
         {
             foreach (Reserva reserva in reservas)
             {
@@ -51,11 +80,11 @@ namespace Fase1
             return null;
         }
 
-        public Reserva[] AmostrarReservas()
+        public static Reserva[] AmostrarReservas()
         {
-            Reserva[] totalReservas = new Reserva[tot];
+            Reserva[] totalReservas = new Reserva[totRes];
 
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < totRes; i++)
             {
                 totalReservas[i] = reservas[i];
             }

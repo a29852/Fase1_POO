@@ -6,38 +6,40 @@ using System.Threading.Tasks;
 
 namespace Fase1
 {
-    internal class Cliente
+    internal class Cliente : Pessoa
     {
         #region ATRIBUTOS
-        int nif;
+
+        int id;
         string nome;
         int contacto;
-        int idade;
+
         #endregion
 
 
         #region CONSTRUTORES
-        public Cliente(int nif, string nome, int contacto, int idade)
+        public Cliente(int id, string nome, int contacto, int idade, string sexo)
         {
-            this.nif = nif;
+            this.id = id;
             this.nome = nome;
             this.contacto = contacto;
-            this.idade = idade;
+            Idade = idade;
+            Sexo = sexo;
         }
 
         #endregion
 
         #region PROPRIEDADES
         
-        public int Nif
+        public int Id
         {
             get 
             {
-            return nif;
+            return id;
             }
             set
             {
-                nif = value;
+                id = value;
             }
         }
 
@@ -65,17 +67,7 @@ namespace Fase1
             }
         }
 
-        public int Idade
-        {
-            get
-            {
-                return idade;
-            }
-            set
-            {
-                idade = value;
-            }
-        }
+  
 
         #endregion
 

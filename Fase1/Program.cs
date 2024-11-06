@@ -11,21 +11,21 @@ namespace Fase1
         static void Main(string[] args)
         {
             //CLIENTE
-            Cliente c1 = new Cliente(1, "Joao", 999, 30);
-            Cliente c2 = new Cliente(2, "maria", 111, 22);
+            Cliente c1 = new Cliente(1, "Joao", 999, 30, "M");
+            Cliente c2 = new Cliente(2, "maria", 111, 22, "F");
 
-            Clientes clientes1 = new Clientes(30);
-            clientes1.RegistarCliente(c1);
-            clientes1.RegistarCliente(c2);
+            Clientes.RegistarCliente(c1);
+            Clientes.RegistarCliente(c2);
 
-            Cliente aux = clientes1.PequisarCliente(2);
+            Console.WriteLine("Pesquisar cliente 2");
+            Cliente aux = Clientes.PequisarCliente(2);
             Console.WriteLine("nome: " + aux.Nome.ToString());
-            Console.WriteLine("nif: " + aux.Nif.ToString());
+            Console.WriteLine("id: " + aux.Id.ToString());
 
+            Console.WriteLine("Clientes existentes: ");
+            Cliente[] listaClientes = Clientes.AmostrarClientes();
 
-
-            Cliente[] listaClientes = clientes1.AmostrarClientes();
-
+            
             foreach (Cliente cliente in listaClientes)
             {
                 Console.WriteLine(cliente.Nome);
@@ -36,36 +36,65 @@ namespace Fase1
             //ALOJAMENTO
             Alojamento a1 = new Alojamento(1, "casa", "braga", 12, true);
             Alojamento a2 = new Alojamento(2, "apartamento", "barcelos", 10, true);
+            Alojamento a3 = new Alojamento(3, "apartamento", "porto", 10, true);
 
-            Alojamentos alojamentos1 = new Alojamentos(30);
-            alojamentos1.RegistarAlojamentos(a1);
-            alojamentos1.RegistarAlojamentos(a2);
+            Alojamentos.RegistarAlojamentos(a1);
+            Alojamentos.RegistarAlojamentos(a2);
+            Alojamentos.RegistarAlojamentos(a3);
 
-            Alojamento aux2 = alojamentos1.PequisarAlojamento(2);
+            Console.WriteLine("Pesquisar alojamento 2: ");
+            Alojamento aux2 = Alojamentos.PequisarAlojamento(2);
             Console.WriteLine("localidade: " + aux2.Localizacao.ToString());
             Console.WriteLine("disponibilidade: " + aux2.Disponivel.ToString());
 
-
-            Alojamento[] listaAlojamentos = alojamentos1.AmostrarAlojamentos();
+            Console.WriteLine("Alojamentos Existentes: ");
+            Alojamento[] listaAlojamentos = Alojamentos.AmostrarAlojamentos();
 
             foreach (Alojamento alojamento in listaAlojamentos)
             {
                 Console.WriteLine(alojamento.Localizacao);
             }
 
+
             //RESERVA
             var date = new DateTime(2024, 11, 12, 00, 00, 00);
             Reserva r1 = new Reserva(1, c1, a2, date);
             Reserva r2 = new Reserva(2, c2, a1, date);
 
-            Reservas reservas1 = new Reservas(30);
-            reservas1.RegistarReservas(r1);
-            reservas1.RegistarReservas(r2);
 
-            Reserva aux3 = reservas1.PequisarReserva(2);
+            Console.WriteLine("Alojamentos Disponiveis: ");
+            Alojamento[] listaAlojamentosD = Alojamentos.AmostrarAlojamentos();
+
+            foreach (Alojamento alojamento in listaAlojamentos)
+            {
+                if(alojamento.Disponivel == true)
+                {
+                    Console.WriteLine(alojamento.Localizacao);
+                }
+            }
+
+
+            Reservas.RegistarReservas(r1);
+            Reservas.RegistarReservas(r2);
+
+            Reserva aux3 = Reservas.PequisarReserva(2);
             Console.WriteLine("Cliente: " + aux3.Cliente.Nome.ToString());
             Console.WriteLine("Alojamento: " + aux3.Alojamento.Localizacao.ToString());
             Console.WriteLine("DataFim: " + aux3.DataFim.ToString());
+
+
+            Reservas.ModificarReserva(r2, a3);
+
+            Console.WriteLine("Alojamentos Disponiveis: ");
+            Alojamento[] listaAlojamentosD2 = Alojamentos.AmostrarAlojamentos();
+
+            foreach (Alojamento alojamento in listaAlojamentos)
+            {
+                if (alojamento.Disponivel == true)
+                {
+                    Console.WriteLine(alojamento.Localizacao);
+                }
+            }
 
             Console.ReadLine();
         }

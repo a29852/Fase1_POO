@@ -13,38 +13,41 @@ namespace Fase1
 
         #region ATRIBUTOS
 
-        Alojamento[] alojamentos;
-        int tot = 0;
+        const int MAXALOJ = 20;
+        static Alojamento[] alojamentos;
+        static int totAloj = 0;
 
         #endregion
 
         #region CONSTRUTORES
 
-        public Alojamentos(int n)
+        static Alojamentos()
         {
-            alojamentos = new Alojamento[n];
+            alojamentos = new Alojamento[MAXALOJ];
+            totAloj = 0;
         }
 
         #endregion
 
         #region METODOS
 
-        public bool RegistarAlojamentos(Alojamento a)
+        public static bool RegistarAlojamentos(Alojamento a)
         {
-            if (tot < alojamentos.Length)
+            if (totAloj < MAXALOJ)
             {
-                alojamentos[tot++] = a;
+                alojamentos[totAloj++] = a;
                 return true;
             }
 
             return false;
         }
 
-        public Alojamento PequisarAlojamento(int numero)
+
+        public static Alojamento PequisarAlojamento(int numero)
         {
             foreach (Alojamento alojamento in alojamentos)
             {
-                if (alojamento.Numero == numero)
+                if ( alojamento.Numero == numero)
                 {
                     return alojamento;
                 }
@@ -52,11 +55,11 @@ namespace Fase1
             return null;
         }
 
-        public Alojamento[] AmostrarAlojamentos()
+        public static Alojamento[] AmostrarAlojamentos()
         {
-            Alojamento[] totalAlojamentos = new Alojamento[tot];
+            Alojamento[] totalAlojamentos = new Alojamento[totAloj];
 
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < totAloj; i++)
             {
                 totalAlojamentos[i] = alojamentos[i];
             }
