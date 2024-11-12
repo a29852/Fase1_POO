@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * Gustavo Pereira
+ * a29852@alunos.ipca.pt
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +17,7 @@ namespace Fase1
         static void Main(string[] args)
         {
             //CLIENTE
+
             Cliente c1 = new Cliente(1, "Joao", 999, 30, "M");
             Cliente c2 = new Cliente(2, "maria", 111, 22, "F");
 
@@ -57,7 +64,7 @@ namespace Fase1
 
 
             //RESERVA
-            var date = new DateTime(2024, 11, 12, 00, 00, 00);
+            var date = new DateTime(2025, 11, 12, 00, 00, 00);
             Reserva r1 = new Reserva(1, c1, a2, date);
             Reserva r2 = new Reserva(2, c2, a1, date);
 
@@ -95,6 +102,8 @@ namespace Fase1
                     Console.WriteLine(alojamento.Localizacao);
                 }
             }
+
+            Reservas.FazerCheckIn(1);
 
             Console.ReadLine();
         }

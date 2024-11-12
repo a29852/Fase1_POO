@@ -1,4 +1,11 @@
-﻿using System;
+﻿/**
+ * Gustavo Pereira
+ * a29852@alunos.ipca.pt
+ */
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +15,13 @@ namespace Fase1
 {
     internal class Alojamento
     {
+
         #region ATRIBUTOS
+
+        /// <summary>
+        /// Atributos da classe Alojamento
+        /// </summary>
+
         int numero;
         string tipo;
         string localizacao;
@@ -19,6 +32,14 @@ namespace Fase1
 
         #region CONSTRUTOR
 
+        /// <summary>
+        /// Utilizamos o construtor para inicializar um novo objeto da classe
+        /// </summary>
+        /// <param name="numero">referente ao numero do alojamento</param>
+        /// <param name="tipo">referente ao tipo de alojamento (casa, apartamento)</param>
+        /// <param name="localizacao">referente á localização do apartamento</param>
+        /// <param name="precoNoite">referente ao preço por noite do apartamento</param>
+        /// <param name="disponivel">referente á disponivilidade, se o apartamento já está reservado ou não</param>
         public Alojamento(int numero, string tipo, string localizacao, double precoNoite, bool disponivel)
         {
             this.numero = numero;

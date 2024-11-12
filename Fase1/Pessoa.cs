@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * Gustavo Pereira
+ * a29852@alunos.ipca.pt
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +16,20 @@ namespace Fase1
     {
         #region ATRIBUTOS
 
+        /// <summary>
+        /// Atributos da classe Pessoa
+        /// </summary>
+
         int idade;
         string sexo;
 
         #endregion
 
         #region CONSTRUTORES
+
+        /// <summary>
+        /// Construtor que inicia uma pessoa com idade a 0 e sexo como vazio
+        /// </summary>
 
         public Pessoa()
         {
@@ -50,6 +64,21 @@ namespace Fase1
             {
                 sexo = value;
             }
+        }
+
+        #endregion
+
+        #region METODOS
+
+        public override bool Equals(object obj)
+        {
+            Pessoa p = (Pessoa)obj;
+
+            if (this.sexo == p.sexo || this.idade == p.idade)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * Gustavo Pereira
+ * a29852@alunos.ipca.pt
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -13,6 +19,10 @@ namespace Fase1
 
         #region ATRIBUTOS
 
+        /// <summary>
+        /// Atributos da classe Alojamentos
+        /// </summary>
+
         const int MAXALOJ = 20;
         static Alojamento[] alojamentos;
         static int totAloj = 0;
@@ -20,6 +30,10 @@ namespace Fase1
         #endregion
 
         #region CONSTRUTORES
+
+        /// <summary>
+        /// Construtor que serve para criar um array de Alojamentos
+        /// </summary>
 
         static Alojamentos()
         {
@@ -30,6 +44,12 @@ namespace Fase1
         #endregion
 
         #region METODOS
+
+        /// <summary>
+        /// A função "RegistarAlojamentos" regista um novo alojamento caso exista disponibilidade no array
+        /// </summary>
+        /// <param name="a">A função recebe um objeto "Alojamento" como parâmetro</param>
+
 
         public static bool RegistarAlojamentos(Alojamento a)
         {
@@ -42,6 +62,10 @@ namespace Fase1
             return false;
         }
 
+        /// <summary>
+        /// A função procura um objeto "Alojamento" e retorna se o encontrar
+        /// </summary>
+        /// <param name="numero">O parâmetro é um número inteiro que representa o número do alojamento que se procura</param>
 
         public static Alojamento PequisarAlojamento(int numero)
         {
@@ -55,6 +79,9 @@ namespace Fase1
             return null;
         }
 
+        /// <summary>
+        /// A função "AmostrarAlojamentos" cria um novo array e copia os elementos do array existente para no fim retornar o array
+        /// </summary>
         public static Alojamento[] AmostrarAlojamentos()
         {
             Alojamento[] totalAlojamentos = new Alojamento[totAloj];

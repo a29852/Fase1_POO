@@ -1,4 +1,10 @@
-﻿using System;
+﻿/**
+ * Gustavo Pereira
+ * a29852@alunos.ipca.pt
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,15 +17,28 @@ namespace Fase1
     {
         #region ATRIBUTOS
 
+        /// <summary>
+        /// Atributos da classe Reserva
+        /// </summary>
+
         int id = 0;
         Cliente cliente;
         Alojamento alojamento;
         DateTime dataInicio;
         DateTime dataFim;
+        bool checkIn;
 
         #endregion
 
         #region CONSTRUTORES
+
+        /// <summary>
+        /// Utilizamos o construtor para poder inicializar um novo objeto da classe
+        /// </summary>
+        /// <param name="id">Identifica a reserva</param>
+        /// <param name="c">identifica o cliente que fez a reserva</param>
+        /// <param name="a">identifica o alojamento referente a reserva</param>
+        /// <param name="dataFim">identifica a data de fim da reserva</param>
 
         public Reserva(int id, Cliente c, Alojamento a, DateTime dataFim)
         {
@@ -29,6 +48,7 @@ namespace Fase1
             this.alojamento.Disponivel = false;
             dataInicio = DateTime.Now;
             this.dataFim = dataFim;
+            this.checkIn = false;
         }
 
         #endregion
@@ -92,6 +112,18 @@ namespace Fase1
             set
             {
                 dataFim = value;
+            }
+        }
+
+        public bool CheckIn
+        {
+            get
+            {
+                return checkIn;
+            }
+            set
+            {
+                checkIn = value;
             }
         }
 
